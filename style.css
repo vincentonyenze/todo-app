@@ -64,3 +64,17 @@ h1 {
     text-decoration: line-through;
     color: #999;
 }
+
+.delete-button {
+    float: right;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
