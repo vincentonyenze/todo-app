@@ -1,6 +1,12 @@
 const taskInput = document.getElementById("task-input");
 const addButton = document.getElementById("add-button");
 const taskList = document.getElementById("task-list");
+const taskCount = document.getElementById("task-count");
+
+function updateCount() {
+    const total = taskList.children.length;
+    taskCount.textContent = total + " tasks";
+}
 
 function addTask() {
     const taskText = taskInput.value.trim();
@@ -23,6 +29,7 @@ function addTask() {
 
     deleteButton.addEventListener("click", function () {
         li.remove();
+        updateCount();
     });
 
     li.appendChild(deleteButton);
@@ -30,6 +37,7 @@ function addTask() {
     taskList.appendChild(li);
 
     taskInput.value = "";
+    updateCount();
 }
 
 addButton.addEventListener("click", addTask);
