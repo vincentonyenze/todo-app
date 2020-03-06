@@ -4,8 +4,13 @@ const taskList = document.getElementById("task-list");
 const taskCount = document.getElementById("task-count");
 
 function updateCount() {
-    const total = taskList.children.length;
-    taskCount.textContent = total + " tasks";
+    const tasksLeft = taskList.querySelectorAll("li:not(.completed)").length;
+
+    if (tasksLeft === 1) {
+        taskCount.textContent = "1 task left";
+    } else {
+        taskCount.textContent = tasksLeft + " tasks left";
+    }
 }
 
 function addTask() {
@@ -21,6 +26,7 @@ function addTask() {
 
     li.addEventListener("click", function () {
         li.classList.toggle("completed");
+        updateCount();
     });
 
     const deleteButton = document.createElement("button");
