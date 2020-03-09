@@ -13,6 +13,19 @@ function updateCount() {
     }
 }
 
+function saveTasks() {
+    const tasks = [];
+
+    taskList.querySelectorAll("li").forEach(function (li) {
+        tasks.push({
+            text: li.querySelector("span").textContent,
+            completed: li.classList.contains("completed")
+        });
+    });
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 function addTask() {
     const taskText = taskInput.value.trim();
 
@@ -22,11 +35,15 @@ function addTask() {
     }
 
     const li = document.createElement("li");
-    li.textContent = taskText;
+
+    const span = document.createElement("span");
+    span.textContent = taskText;
+    li.appendChild(span);
 
     li.addEventListener("click", function () {
         li.classList.toggle("completed");
         updateCount();
+        saveTasks();
     });
 
     const deleteButton = document.createElement("button");
@@ -36,6 +53,7 @@ function addTask() {
     deleteButton.addEventListener("click", function () {
         li.remove();
         updateCount();
+        saveTasks();
     });
 
     li.appendChild(deleteButton);
@@ -44,6 +62,7 @@ function addTask() {
 
     taskInput.value = "";
     updateCount();
+    saveTasks();
 }
 
 addButton.addEventListener("click", addTask);
