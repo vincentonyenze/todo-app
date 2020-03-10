@@ -26,18 +26,15 @@ function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function addTask() {
-    const taskText = taskInput.value.trim();
-
-    if (taskText === "") {
-        alert("Please type a task first!");
-        return;
-    }
-
+function createTask(text, completed) {
     const li = document.createElement("li");
 
+    if (completed) {
+        li.classList.add("completed");
+    }
+
     const span = document.createElement("span");
-    span.textContent = taskText;
+    span.textContent = text;
     li.appendChild(span);
 
     li.addEventListener("click", function () {
@@ -59,6 +56,17 @@ function addTask() {
     li.appendChild(deleteButton);
 
     taskList.appendChild(li);
+}
+
+function addTask() {
+    const taskText = taskInput.value.trim();
+
+    if (taskText === "") {
+        alert("Please type a task first!");
+        return;
+    }
+
+    createTask(taskText, false);
 
     taskInput.value = "";
     updateCount();
