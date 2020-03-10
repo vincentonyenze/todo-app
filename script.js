@@ -80,3 +80,15 @@ taskInput.addEventListener("keydown", function (event) {
         addTask();
     }
 });
+
+function loadTasks() {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    savedTasks.forEach(function (task) {
+        createTask(task.text, task.completed);
+    });
+
+    updateCount();
+}
+
+loadTasks();
