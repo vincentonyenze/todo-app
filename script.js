@@ -47,7 +47,8 @@ function createTask(text, completed) {
     deleteButton.textContent = "Delete";
     deleteButton.className = "delete-button";
 
-    deleteButton.addEventListener("click", function () {
+    deleteButton.addEventListener("click", function (event) {
+        event.stopPropagation();
         li.remove();
         updateCount();
         saveTasks();
