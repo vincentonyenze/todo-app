@@ -79,6 +79,12 @@ h1 {
     background-color: #c0392b;
 }
 
+#empty-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
 .list-footer {
     display: flex;
     justify-content: space-between;

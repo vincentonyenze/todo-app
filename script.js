@@ -3,6 +3,7 @@ const addButton = document.getElementById("add-button");
 const taskList = document.getElementById("task-list");
 const taskCount = document.getElementById("task-count");
 const clearButton = document.getElementById("clear-completed");
+const emptyMessage = document.getElementById("empty-message");
 
 function updateCount() {
     const tasksLeft = taskList.querySelectorAll("li:not(.completed)").length;
@@ -11,6 +12,12 @@ function updateCount() {
         taskCount.textContent = "1 task left";
     } else {
         taskCount.textContent = tasksLeft + " tasks left";
+    }
+
+    if (taskList.children.length === 0) {
+        emptyMessage.style.display = "block";
+    } else {
+        emptyMessage.style.display = "none";
     }
 }
 
