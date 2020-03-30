@@ -79,9 +79,28 @@ h1 {
     background-color: #c0392b;
 }
 
+.list-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
 #task-count {
     color: #777;
     font-size: 14px;
-    text-align: right;
-    margin-bottom: 0;
+    margin: 0;
+}
+
+#clear-completed {
+    background: none;
+    border: none;
+    color: #777;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#clear-completed:hover {
+    color: #e74c3c;
+    text-decoration: underline;
 }

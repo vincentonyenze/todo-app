@@ -2,6 +2,7 @@ const taskInput = document.getElementById("task-input");
 const addButton = document.getElementById("add-button");
 const taskList = document.getElementById("task-list");
 const taskCount = document.getElementById("task-count");
+const clearButton = document.getElementById("clear-completed");
 
 function updateCount() {
     const tasksLeft = taskList.querySelectorAll("li:not(.completed)").length;
@@ -80,6 +81,15 @@ taskInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         addTask();
     }
+});
+
+clearButton.addEventListener("click", function () {
+    taskList.querySelectorAll("li.completed").forEach(function (li) {
+        li.remove();
+    });
+
+    updateCount();
+    saveTasks();
 });
 
 function loadTasks() {
